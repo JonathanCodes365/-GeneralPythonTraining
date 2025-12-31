@@ -1,0 +1,33 @@
+#31 DEC : Upgraded version of Number Guessing Game with throwing Errors.
+
+
+
+
+#Thanks for reading the before code of the normal number guessing game ..This is just an upgrade of that with us checking for possible exceptions within the systems as well.
+#Say, the user inputs:
+#1. A string instead of a number . 2. A number outside the range of 1 to 100. 3.A floating point number? 
+#4. A negative number? 5. No input at all? 6. Special characters? 7. Very large numbers? 8. Zero? 9. Decimal numbers?
+#so, you get the point righht? we need to handle these invalid inputs as well.
+
+import random   
+number_to_guess= random.randint(1,100)
+attempts = 0
+#so , here we will try to implement exception handling using try and except blocks.
+while True:
+    try:
+        user_guess = int(input("Enter your guess number between 1 to 100:"))
+        if user_guess < 1 or user_guess > 100:
+            print("Please enter a number within the range of 1 to 100.")
+            continue
+        #HERE , what continue does is it doesnt let the user take further steps and goes back to the start of the while loop.
+    except ValueError:
+        print("Invalid input! Please enter a valid integer number.")
+        continue
+    attempts +=1 
+    if user_guess<number_to_guess:
+        print("Your guess is too low. Try again!")
+    elif user_guess>number_to_guess:
+        print("Your guess is too high.TRY AGAIN!!")
+    else:
+        print(f"Congratulations! You've guessed the number succesffully in {attempts} attempts.")
+        break
